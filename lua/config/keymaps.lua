@@ -51,7 +51,7 @@ keymap.set("n", "<leader>t", function()
   require("scripts.screenshot").insertScreenshot()
 end)
 
--- Show keymaps
+-- Show normal mode keymaps
 keymap.set("n", "?", function()
   require("which-key").show("", { mode = "n", auto = true })
 end)

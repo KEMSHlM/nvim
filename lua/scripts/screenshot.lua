@@ -43,10 +43,10 @@ M.insertScreenshot = function()
   if vim.fn.isdirectory(screenshotDir) == 0 then
     local mkdir_result = vim.fn.mkdir(screenshotDir, "p")
     if mkdir_result == 0 then
-      print("Error: Could not create the screenshot directory: " .. screenshotDir)
+      vim.notify("Error: Could not create the screenshot directory: " .. screenshotDir)
       return
     else
-      print("Screenshot directory created: " .. screenshotDir)
+      vim.notify("Screenshot directory created: " .. screenshotDir)
     end
   end
 
@@ -57,7 +57,7 @@ M.insertScreenshot = function()
   elseif vim.fn.has("unix") == 1 then
     screenshotCmd = "scrot -s " .. vim.fn.shellescape(filepath)
   else
-    print("Error: Unsupported OS")
+    vim.notify("Error: Unsupported OS")
     return
   end
 
@@ -65,7 +65,7 @@ M.insertScreenshot = function()
   if screenshotCmd ~= "" then
     local shellResult = vim.fn.system(screenshotCmd)
     if vim.v.shell_error ~= 0 then
-      print("Error: Failed to take a screenshot." .. shellResult)
+      vim.notify("Error: Failed to take a screenshot." .. shellResult)
       return
     end
   end
