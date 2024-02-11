@@ -5,6 +5,11 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
+-- Show keymaps
+keymap.set("n", "?", function()
+  require("which-key").show("", { mode = "n", auto = true })
+end)
+
 -- Increment/decrement
 keymap.set("n", "+", "<C-a>")
 keymap.set("n", "-", "<C-x>")
