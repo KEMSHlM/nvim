@@ -129,6 +129,15 @@ return {
         desc = "Lists Function names, variables, from Treesitter",
       },
       {
+        ";n",
+        function()
+          local builtin = require("telescope")
+          builtin.load_extension("notify")
+          builtin.extensions.notify.notify()
+        end,
+        desc = "Lists notifications",
+      },
+      {
         "sf",
         function()
           local telescope = require("telescope")
