@@ -8,13 +8,48 @@ return {
     event = "BufRead", -- or any other event you might want to use.
     keys = {
       {
-        "<leader>d",
+        "<leader>dd",
         function()
           require("lazydocker").open()
         end,
         desc = "Lazy docker",
       },
     },
+  },
+  {
+    "kndndrj/nvim-dbee",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    build = function()
+      -- Install tries to automatically detect the install method.
+      -- if it fails, try calling it with one of these parameters:
+      --    "curl", "wget", "bitsadmin", "go"
+      require("dbee").install()
+    end,
+    config = function()
+      require("dbee").setup(--[[optional config]])
+    end,
+    keys = {
+      {
+        "<leader>db",
+        function()
+          require("dbee").open()
+        end,
+        desc = "Dbee",
+      },
+    },
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreview", "MarkdownPreviewStop" },
+    lazy = false,
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+    init = function()
+      vim.g.mkdp_theme = "dark"
+    end,
   },
   --   {
   --     "jackMort/ChatGPT.nvim",
